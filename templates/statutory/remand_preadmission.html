@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %} CPIMS CTiP {% endblock %}
+
+{% load app_filters %}
+
+{% load crispy_forms_tags %}
+
+{% block style_code %}
+<link href="{% static 'plugins/datatables/css/data-table.css' %}"
+    rel="stylesheet" />
+{% endblock %}
+
+{% block primary %}
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+    <li><a href="#">Home</a></li>
+    <li class="active">CTiP</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Statutory Institutions <small>Home</small></h1>
+<!-- end page-header -->
+<div id="messages" class="alert alert-danger fade in" style="display: none;"
+    tabindex="1">
+    <span class="close" data-dismiss="alert">×</span>
+    <i class="fa fa-check fa-2x pull-left"></i>
+    <span class="invalid-form-message" id="invalid-form-message"></span>
+</div>
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="#" class="btn btn-xs btn-icon btn-circle
+                        btn-warning" data-click="panel-collapse"><i class="fa
+                            fa-minus"></i></a>
+                    <a href="#" class="btn btn-xs btn-icon btn-circle
+                        btn-danger" data-click="panel-remove"><i class="fa
+                            fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">Statutory Institutions</h4>
+            </div>
+            <!-- start panel body -->
+            <div class="panel-body">
+                <div class="row m-3">
+                    <h3 class="is-h3">Child's Details</h3>
+                    <form class="form-horizontal m-3 is-row" action="." method="GET"
+                        data-parsley-validate="true">
+                        <div class="is-col-md-4">
+                            <label for="fname" class="is-form-label">First Name:</label>
+                            <input type="text" placeholder="first_name"
+                                class="is-form-control">
+
+                        </div>
+
+                        <div class="is-col-md-2">
+
+                            <label for="lname" class="is-form-label">Last Name:</label>
+                            <input type="text" placeholder="last_name"
+                                class="is-form-control">
+
+                        </div>
+                        <div class="is-col-md-2">
+
+                            <label for="date" class="is-form-label">Date Of Birth:</label>
+                            <input type="date" placeholder="12/02/2031"
+                                class="is-form-control">
+
+                        </div>
+                        <div class="is-col-md-2">
+                            <div class="is-m-r-10">Year Of Study:</label>
+                            <input type="number" placeholder="12/02/2031"
+                                class="is-form-control">
+                        </div>
+                    </div>
+
+                </form>
+             <div class="is-h3">
+                Parent's Details
+             </div>
+                <form class="is-form-horizontal m-3 is-row" action="." method="GET"
+                    data-parsley-validate="true">
+                    <div class="is-col-md-4">
+
+
+                        <label for="mother" class="is-form-label">Mother's Name:</label>
+                        <input type="text" name="mother"
+                            placeholder="Mothers_name" class="is-form-control">
+                    </div>
+
+                    <div class="is-col-md-2">
+
+                        <label for="mather_address" class="is-form-label">Mother's
+                            address</label>
+                        <input type="text" name="mather_address"
+                            placeholder="address" class="is-form-control">
+
+                    </div>
+                    <div class="is-col-md-2">
+
+                        <label for="date" class="is-form-label">Telephone</label>
+                        <input type="number" placeholder="+"
+                            class="is-form-control">
+
+                    </div>
+                    <div class="is-col-md-2">
+                        <div class="is-m-r-10">
+                            <label for="alive" class="is-form-label">Alive?</label>
+                            <input type="radio" name="yes" id=""
+                                class="is-form-control">
+                            <input type="radio" name="No" id=""
+                                class="is-form-control">
+                        </div>
+                    </div>
+
+                </form>
+              
+                <form class="is-form-horizontal m-3 is-row" action="." method="GET"
+                    data-parsley-validate="true">
+                    <div class="is-col-md-4">
+
+
+                        <label for="mother" class="is-form-label">Father's Name:</label>
+                        <input type="text" name="father"
+                            placeholder="Mothers_name" class="is-form-control">
+                    </div>
+
+                    <div class="is-col-md-2">
+
+                        <label for="mather_address" class="is-form-label">Father's
+                            address</label>
+                        <input type="text" name="father_address"
+                            placeholder="address" class="is-form-control">
+
+                    </div>
+                    <div class="is-col-md-2">
+
+                        <label for="date" class="is-form-label">Telephone</label>
+                        <input type="number" placeholder="+"
+                            class="is-form-control">
+
+                    </div>
+                    <div class="is-col-md-2">
+                        <div class="is-m-r-10">
+                            <label for="alive" class="is-form-label">Alive?</label>
+                            <input type="radio" name="yes" id=""
+                                class="is-form-control">
+                            <input type="radio" name="No" id=""
+                                class="is-form-control">
+                        </div>
+                    </div>
+
+                </form>
+
+                <hr>
+
+            </div>
+            <!-- end panel body -->
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+{% endblock %}
+
+{% block lazy_javascript_code %}
+<script src="{% static 'plugins/datatables/js/jquery.dataTables.js' %}"></script>
+<script src="{% static 'plugins/datatables/js/dataTables.bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/datatables/js/moment.min.js' %}"></script>
+<script src="{% static 'plugins/datatables/js/datetime-moment.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('#data-table').DataTable( {
+        "order": [[ 0, "asc" ]]
+    } );
+
+    $('.ddash').on('click', function(ev) {
+        // var hashValue = location.hash.replace(/^#/, '');
+        var id = $(this).attr('id');
+        var cname = $(this).attr('rel');
+        var cdate = $(this).attr('rel1');
+        $('#cname').html(cname);
+        $('#cdate').html(cdate);
+        $('#item_cid').val(id);
+        $('#mywork > tbody').html('<tr><td colspan="3">Loading data</td></tr>');
+        $.ajax({
+           type: "POST",
+           url: "{{ request.get_full_path }}",
+           data: $("#icases").serialize()+ "&item_id="+ id + "&did=1",
+           success: function(response)
+           {
+               var msg = response.message;
+               var status_id = response.status;
+               var cdates = response.dates;
+               if (status_id == 0){
+                   $("#report_"+ id).remove();
+               }
+               $('#mng_messages').html(msg);
+               var dt = '';
+               var tchildren = 0;
+               var tcases = 0;
+               var trpts = 0;
+               $.each(response.data, function(key, val) {
+                    dt += '<tr><td></td><td>'+ key +'</td><td>';
+                    dt += val + '</td></tr>';
+                });
+               $('#mywork > tbody').html(dt);
+           },
+            error: function(){
+                $('#mng_messages').html("Error removing report")
+            }
+         });
+        $('#modal-details').modal('show');
+        ev.preventDefault();
+    });
+} );
+</script>
+{% endblock %}
